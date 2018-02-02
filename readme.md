@@ -13,7 +13,7 @@
 ```
     1. [jwt-auth](https://github.com/tymondesigns/jwt-auth)
     2. [dingo-api](https://github.com/dingo/api)
-    3. [league/fractal](https://github.com/thephpleague/fractal)
+    3. [laravel-fractal](https://github.com/spatie/laravel-fractal)
 ```
 
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Transformers\UserTransformer;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class UsersController extends Controller
 {
@@ -14,9 +16,17 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return $this->response->array($users)->setStatusCode(200);
-        ;
+        $users = User::paginate(10);
+
+        return fractal()
+                ->withResourceName('data')
+                ->collection($users)
+                ->transformWith(new UserTransformer())
+                ->paginateWith(new IlluminatePaginatorAdapter($users))
+                ->addMeta(['status' => 200])
+                // ->includeUser()
+                ->toArray();
+        // return $this->response->collection(User::paginate(20), new UserTransformer);
     }
 
     /**
