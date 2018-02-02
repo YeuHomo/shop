@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // \App\Models\Reply::observe(\App\Observers\ReplyObserver::class);
+        \App\Models\User::observe(\App\Observers\UserObserver::class);
 
         Carbon::setLocale('zh');//设置时区为上海时区
     }
