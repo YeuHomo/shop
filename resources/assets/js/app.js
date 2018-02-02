@@ -15,8 +15,21 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+import App from './App.vue'
+import axios from 'axios'
+import VueRouter from 'vue-router'
+import routes from './routes'   // 路由配置文件
+
+Vue.use(VueRouter)
+
+// 实例化路由
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
+    render: h => h(App)
 });
