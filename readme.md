@@ -1,4 +1,4 @@
->this is small shop 
+>this is a mini books shop 
 
 ```
     1. git clone git@github.com:EddyAnn/shop.git
@@ -9,10 +9,11 @@
 
 ```
 
-> use packages
+> use composer packages
 ```
-    1. jwt-auth:
-    2. dingo-api:
+    1. [jwt-auth](https://github.com/tymondesigns/jwt-auth)
+    2. [dingo-api](https://github.com/dingo/api)
+    3. [league/fractal](https://github.com/thephpleague/fractal)
 ```
 
 
