@@ -13,13 +13,11 @@
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', [
-    'namespace' => 'App\Http\Controllers\Api'
-], function ($api) {
+$api->version('v1', function ($api) {
     // 游客可以访问的接口
-
     // 需要 token 验证的接口
     $api->group([
+      'namespace' => 'App\Http\Controllers\Api',
       'middleware' => ['api.throttle'],
       'limit' => config('api.rate_limits.sign.limit'),
       'expires' => config('api.rate_limits.sign.expires'),
@@ -29,5 +27,13 @@ $api->version('v1', [
           });
 
           $api->resource('users', 'UsersController');
+      });
+    $api->group([
+      'namespace' => 'App\Http\Controllers\Common',
+      'middleware' => ['api.throttle'],
+      'limit' => config('api.rate_limits.sign.limit'),
+      'expires' => config('api.rate_limits.sign.expires'),
+      ], function ($api) {
+          $api->get('test', 'OssController@upload');
       });
 });

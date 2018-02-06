@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('image/upload', function () {
+    return view('upload');
+});
+
+Route::post('image/upload', 'Common\OssController@upload')->name('image.upload');
+
 Route::any('{all}', function () {
     return view('app');
 })->where(['all' => '.*']);
